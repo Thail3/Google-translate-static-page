@@ -8,9 +8,12 @@ function Modal({ setShowModal, languages }) {
 
   // const filteredLanguages = languages;
 
-  const filteredLanguages = languages.filter((language) =>
-    language.toLowerCase().startsWith(searchedLanguage.toLowerCase())
-  );
+  const filteredLanguages = languages.filter((language) => {
+    console.log(searchedLanguage);
+    return language.language
+      .toLowerCase()
+      .startsWith(searchedLanguage.toLowerCase());
+  });
 
   console.log("FilteredLangu Modal", filteredLanguages);
 
@@ -22,6 +25,8 @@ function Modal({ setShowModal, languages }) {
     // setChosenLanguage(e.target.textContent)
     setShowModal(false);
   };
+
+  console.log(JSON.stringify(languages));
 
   return (
     <div className="option-list">
@@ -51,7 +56,7 @@ function Modal({ setShowModal, languages }) {
                 //       color: chosenLanguage === filteredLanguages ? '#8ab4f8' : null,
                 //     }}
               >
-                {language}
+                {language.language}
               </li>
             </div>
           ))}
